@@ -7,7 +7,6 @@ const AboutUs = () => {
             <h1>About us</h1>
             <p>This is out restaurant about us page</p>
             <ProfileFunction name={"Siddharth"}/>
-            <ProfileClass name={"Siddharth"}/>
             {/* <Link to="profile">Profile</Link>
             <Outlet/> */}
         </div>

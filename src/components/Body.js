@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import RestaurantCard from './RestaurantCard'
 import LoadingUI from './LoadingUI'
 import {Link} from 'react-router-dom'
+import useOnline from '../utils/useOnline'
 
 function filterData(searchItem, restaurantList){
     const filterDta = restaurantList.filter((restaurant)=>
@@ -25,7 +26,11 @@ const Body = () => {
         setRestaurantList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilterRestaurantList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
-    
+
+    const online = useOnline();
+
+    if(!online) return <h1>You are offline</h1>
+    console.log("render");
     //when i dont have my resuarant list return this(not rendering component early)
     if(!restaurantList) return <div>No restaurant</div>;
     return (restaurantList.length === 0) ? <LoadingUI/> : (
@@ -37,8 +42,8 @@ const Body = () => {
             <div className="restaurantLists">
                 {(filterRestaurantList.length ===0) ? <h1>No reataurant match your filter</h1> : filterRestaurantList.map(restaurants => {
                     return( 
-                    <Link to={"/restaurant/"+restaurants.info.id}>
-                        <RestaurantCard key={restaurants.info.id} {...restaurants.info} />
+                    <Link to={"/restaurant/"+restaurants.info.id} key={restaurants.info.id}  >
+                        <RestaurantCard {...restaurants.info} />
                     </Link> 
                     )
                 })}

@@ -2,23 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_URL } from "../constants";
 import LoadingUI from "./LoadingUI";
+import useRestaurant from "../utils/useRestaurant";
 const RestaurantMenu = () => {
     const { id } = useParams();
-    const [restaurant, setRestaurant] = useState({});
+    const restaurant = useRestaurant(id)
 
-    useEffect(() => {
-        fetchRestaurant()
-    }, [])
-
-    async function fetchRestaurant() {
-        const data = await fetch('https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&lat=21.1894506&lng=72.88587869999999&restaurantId='+id)
-        const resp = await data.json();
-        setRestaurant(resp)
-        console.log(resp)
-        // console.log(resp?.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards)
-    }
-
-     return(
+     return !restaurant ? (<LoadingUI/>) : (
         <div>
             <div className="restaurantInfo">
                 <h1>Restaurant id:{id}</h1>
