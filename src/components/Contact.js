@@ -1,5 +1,7 @@
+import Login from "./Login";
+
 const Contact = ()=>{
-    return <h1>Contact us page</h1>
+    return <Login/>
 }
 
 export default Contact;

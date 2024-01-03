@@ -8,8 +8,8 @@ import AboutUs from "./components/AboutUs";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Profile from "./components/Profile";
 import LoadingUI from "./components/LoadingUI";
+import Login from "./components/Login";
 
 const Instamart = lazy(()=> import('./components/Instamart'))
 
@@ -50,6 +50,10 @@ const appRouter = createBrowserRouter([
                 element: <Suspense fallback={<LoadingUI/>}><Instamart/></Suspense> 
             }
         ]
+    },
+    {
+        path: "/login",
+        element: <Login/>
     }
 ]);
 
