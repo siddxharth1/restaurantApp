@@ -40,7 +40,7 @@ const Body = () => {
                 <button className='bg-blue-200 p-2 rounded-xl ml-5' onClick={()=>{let data = filterData(searchItem, restaurantList); setFilterRestaurantList(data)}}>Search</button>
             </div>
             <h1 className='clear-both font-bold text-3xl ml-[5vw] mb-4'>Restaurant Near You</h1>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
                 
                 {(filterRestaurantList.length ===0) ? <h1>No reataurant match your filter</h1> : filterRestaurantList.map(restaurants => {
                     return( 

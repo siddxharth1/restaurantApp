@@ -18,13 +18,13 @@ const RestaurantMenu = () => {
                 <p>{restaurant?.data?.cards?.[0]?.card?.card?.info?.costForTwoMessage}</p>
                 <p>{restaurant?.data?.cards?.[0]?.card?.card?.info?.avgRatingString} star</p>
             </div>
-            <div className="menu">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
             {(restaurant?.data?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards).map((card)=>{
                 return (
                     <div key={card.card.info.id}>
                         <img src={IMG_URL+"/w_208/"+card.card.info.imageId}></img>
                         <h5> Name: {card.card.info.name}</h5> 
-                        <h5> Name: {card.card.info.price}</h5> 
+                        <h5> Price: {card.card.info.price}</h5> 
                     </div>
                 )
             })}
