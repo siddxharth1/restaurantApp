@@ -30,16 +30,18 @@ const Body = () => {
     const online = useOnline();
 
     if(!online) return <h1>You are offline</h1>
-    console.log("render");
+    
     //when i dont have my resuarant list return this(not rendering component early)
     if(!restaurantList) return <div>No restaurant</div>;
     return (restaurantList.length === 0) ? <LoadingUI/> : (
         <>
-            <div className='searchBar'>
-                <input type="text" className='searchBarInput' placeholder='Search' value={searchItem} onChange={(e) => { setSearchItem(e.target.value)}} />
-                <button onClick={()=>{let data = filterData(searchItem, restaurantList); setFilterRestaurantList(data)}}>Search</button>
+            <div className='float-right m-5 p-3 border-solid border-2 border-sky-500 rounded-2xl'>
+                <input type="text" className='p-2 border-b-2 border-indigo-200 outline-none focus:border-indigo-400' placeholder='Search' value={searchItem} onChange={(e) => { setSearchItem(e.target.value)}} />
+                <button className='bg-blue-200 p-2 rounded-xl ml-5' onClick={()=>{let data = filterData(searchItem, restaurantList); setFilterRestaurantList(data)}}>Search</button>
             </div>
-            <div className="restaurantLists">
+            <h1 className='clear-both font-bold text-3xl ml-[5vw] mb-4'>Restaurant Near You</h1>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
+                
                 {(filterRestaurantList.length ===0) ? <h1>No reataurant match your filter</h1> : filterRestaurantList.map(restaurants => {
                     return( 
                     <Link to={"/restaurant/"+restaurants.info.id} key={restaurants.info.id}  >

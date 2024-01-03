@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
             <div className="restaurantInfo">
                 <h1>Restaurant id:{id}</h1>
                 <p>{restaurant?.data?.cards?.[0]?.card?.card?.info?.name}</p>
-                <img className="restaurantMenuImg" src={IMG_URL + restaurant?.data?.cards?.[0]?.card?.card?.info?.cloudinaryImageId} alt="image" />
+                <img className="restaurantMenuImg" src={IMG_URL +"/w_208/"+ restaurant?.data?.cards?.[0]?.card?.card?.info?.cloudinaryImageId} alt="image" />
                 <p>{restaurant?.data?.cards?.[0]?.card?.card?.info?.city}</p>
                 <p>{restaurant?.data?.cards?.[0]?.card?.card?.info?.areaName}</p>
                 <p>{restaurant?.data?.cards?.[0]?.card?.card?.info?.costForTwoMessage}</p>

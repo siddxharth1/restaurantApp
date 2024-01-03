@@ -1,4 +1,8 @@
-body{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body{
     margin: 0;
     padding: 0;
 }
@@ -39,4 +43,4 @@ body{
 }
 .restaurantMenuImg{
     width: 200px;
-}
+} */
