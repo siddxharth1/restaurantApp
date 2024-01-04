@@ -1,3 +1,4 @@
+
 const Footer = () => {
     return <footer className="mt-6">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">

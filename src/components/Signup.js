@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-evenly">
+      <div>
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/fast-food-4119390-3425151.png"
+          alt=""
+        />
+      </div>
       <div className="w-80">
-        <h1 className="font-bold text-3xl">Welcome back</h1>
+        <h1 className="font-bold text-3xl">Sign up</h1>
         <div className="flex flex-col gap-4 mt-6 w-full">
           <input
             type="email"
@@ -15,24 +21,29 @@ const Login = () => {
           />
           <input
             type="password"
-            name="email"
+            name="password"
             id=""
             className="p-3 py-2 w-80 rounded-md border-2 border-gray-300 bg-slate-50 outline-none focus:border-gray-400 hover:border-gray-400 focus:bg-slate-100"
             placeholder="Password"
           />
-          <a
-            href="#"
-            className="text-blue-600 font-semibold text-sm hover:text-blue-700"
-          >
-            Forgot Password?
-          </a>
+          <input
+            type="password"
+            name="password-comfirm"
+            id=""
+            className="p-3 py-2 w-80 rounded-md border-2 border-gray-300 bg-slate-50 outline-none focus:border-gray-400 hover:border-gray-400 focus:bg-slate-100"
+            placeholder="Confirm Password"
+          />
+
           <button className="w-80 bg-blue-600 rounded-md p-2 text-white font-semibold hover:bg-blue-700">
-            Log in
+            Sign up
           </button>
           <p className="text-sm font-medium text-gray-600">
-            Don't have an account?
-            <Link to={"/signup"} className="text-blue-600 ml-1 hover:text-blue-700">
-              Sign up
+            Already have an account?
+            <Link
+              to={"/login"}
+              className="text-blue-600 ml-1 hover:text-blue-700"
+            >
+              Login
             </Link>
           </p>
         </div>
@@ -63,11 +74,8 @@ const Login = () => {
           </button>
         </div>
       </div>
-      <div>
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/fast-food-4119390-3425151.png" alt="" />
-      </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
