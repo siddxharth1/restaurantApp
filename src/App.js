@@ -9,18 +9,25 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoadingUI from "./components/LoadingUI";
+import UserContext from "./utils/UserContext";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const Login = lazy(() => import("./components/Login"));
 const Signup = lazy(() => import("./components/Signup"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Siddharth Sharma",
+    email: "sid@gmail.com",
+  });
 
   return (
     <>
+      <UserContext.Provider value={{user: user,setUser: setUser}} >
         <Header />
         <Outlet />
         <Footer />
+      </UserContext.Provider>
     </>
   );
 };

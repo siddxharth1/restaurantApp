@@ -16,7 +16,7 @@ const Body = () => {
     const [searchItem, setSearchItem] = useState('')
     const [restaurantList, setRestaurantList] = useState([])
     const [filterRestaurantList, setFilterRestaurantList] = useState([])
-    const{user} = useContext(UserContext);
+    const{user, setUser} = useContext(UserContext);
 
     useEffect(()=>{
         getRestaurantData();
@@ -37,12 +37,14 @@ const Body = () => {
     if(!restaurantList) return <div>No restaurant</div>;
     return (restaurantList.length === 0) ? <LoadingUI/> : (
         <>
-        <input type="text" className='border border-black' value={user.name}/>
+        <input type="text" className='border border-black' value={user.name} onChange={(e)=>setUser({...user, name: e.target.value})}/>
+        <input className='border border-black' value={user.email} onChange={(e)=> setUser({...user, email: e.target.value})}/>
 
             <div className='float-right m-5 p-3 border-solid border-2 border-sky-500 rounded-2xl'>
                 <input type="text" className='p-2 border-b-2 border-indigo-200 outline-none focus:border-indigo-400' placeholder='Search' value={searchItem} onChange={(e) => { setSearchItem(e.target.value)}} />
                 <button className='bg-blue-200 p-2 rounded-xl ml-5' onClick={()=>{let data = filterData(searchItem, restaurantList); setFilterRestaurantList(data)}}>Search</button>
             </div>
+            <p className='clear-both'>contact - {user.name} - {user.email}</p>
             <h1 className='clear-both font-bold text-3xl ml-[5vw] mb-4'>Restaurant Near You, {user.name}</h1>
             <div className="grid sm:grid-cols-2 xl:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
                 
@@ -55,6 +57,8 @@ const Body = () => {
                 })}
 
             </div>
+
+            
         </>
     )
 }
