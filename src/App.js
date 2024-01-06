@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoadingUI from "./components/LoadingUI";
 import UserContext from "./utils/UserContext";
+import UserProfile, { Account } from "./UserProfile";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const Login = lazy(() => import("./components/Login"));
@@ -19,6 +20,7 @@ const AppLayout = () => {
   const [user, setUser] = useState({
     name: "Siddharth Sharma",
     email: "sid@gmail.com",
+    number: "1234567890",
   });
 
   return (
@@ -66,6 +68,26 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/profile",
+        element: <UserProfile/>,
+        children: [{
+          path: "account",
+          element: <Account/>
+        },
+        {
+          path: "orders",
+          element: <h1>Orders</h1>
+        },
+        {
+          path: "address",
+          element: <h1>Address</h1>
+        },
+        {
+          path: "payments",
+          element: <h1>Payments</h1>
+        }]
+      }
     ],
   },
   {
