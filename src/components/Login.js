@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+const authenticate = ()=>{
+    return true;
+}
+
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-evenly">
       <div className="w-80">
@@ -26,7 +32,9 @@ const Login = () => {
           >
             Forgot Password?
           </a>
-          <button className="w-80 bg-blue-600 rounded-md p-2 text-white font-semibold hover:bg-blue-700">
+          <button className="w-80 bg-blue-600 rounded-md p-2 text-white font-semibold hover:bg-blue-700"
+            onClick={()=>{(authenticate()) ? navigate("/") : alert("Wrong Credentials")}}
+          >
             Log in
           </button>
           <p className="text-sm font-medium text-gray-600">

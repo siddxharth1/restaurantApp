@@ -1,66 +1,195 @@
-import { useState, useEffect, useContext } from 'react'
-import RestaurantCard from './RestaurantCard'
-import LoadingUI from './LoadingUI'
-import {Link} from 'react-router-dom'
-import useOnline from '../utils/useOnline'
-import UserContext from '../utils/UserContext'
+import { useState, useEffect, useContext } from "react";
+import RestaurantCard from "./RestaurantCard";
+import LoadingUI from "./LoadingUI";
+import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
+import useFindRestaurant from "../utils/useFindRestaurant";
 
-function filterData(searchItem, restaurantList){
-    const filterDta = restaurantList.filter((restaurant)=>
-        restaurant?.info?.name?.toLowerCase()?.includes(searchItem.toLowerCase())
-    )
-    return filterDta;
+function filterData(searchItem, resDataa) {
+  console.log(resDataa);
+  if (searchItem === "defaultFilterOption") {
+    return resDataa;
+  } else if (searchItem === "lowtohigh") {
+    let lowToHighData = resDataa.sort((a, b) => {
+      return (
+        Number(a.info.costForTwo.substring(1, 3)) -
+        Number(b.info.costForTwo.substring(1, 3))
+      );
+    });
+    return lowToHighData;
+  } else if (searchItem === "highToLow") {
+    let highToLowData = resDataa.sort((a, b) => {
+      return (
+        Number(b.info.costForTwo.substring(1, 3)) -
+        Number(a.info.costForTwo.substring(1, 3))
+      );
+    });
+    return highToLowData;
+  } else if (searchItem === "rating") {
+    return resDataa.sort((a, b) => {
+      return b.info.avgRating - a.info.avgRating;
+    });
+  } else if (searchItem === "deliveryTime") {
+    return resDataa.sort((a, b) => {
+      return a.info.sla.deliveryTime - b.info.sla.deliveryTime;
+    });
+  }
+
+  const filterDta = resDataa.filter((restaurant) =>
+    restaurant?.info?.name?.toLowerCase()?.includes(searchItem.toLowerCase())
+  );
+  return filterDta;
 }
 
 const Body = () => {
-    const [searchItem, setSearchItem] = useState('')
-    const [restaurantList, setRestaurantList] = useState([])
-    const [filterRestaurantList, setFilterRestaurantList] = useState([])
-    const{user, setUser} = useContext(UserContext);
+  const [searchItem, setSearchItem] = useState("");
+  const [showFilter, setShowFilter] = useState(false);
+  const [filterBtnStatus, setFilterBtnStatus] = useState("dafaultFilterOption");
+  //   const [restaurantList, setRestaurantList] = useState([])
+  const [filterRestaurantList, setFilterRestaurantList] = useState([]);
+  const resDataa = useFindRestaurant();
+  const online = useOnline();
+  console.log(resDataa);
 
-    useEffect(()=>{
-        getRestaurantData();
-    },[])
-
-    async function getRestaurantData (){
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1894506&lng=72.88587869999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const jsonData = await data.json();
-        setRestaurantList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilterRestaurantList(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  useEffect(() => {
+    if (resDataa) {
+      setFilterRestaurantList(resDataa);
     }
+  }, [resDataa]);
 
-    const online = useOnline();
+  const handleFitersButton = () => {
+    setShowFilter(!showFilter);
+  };
 
-    if(!online) return <h1>You are offline</h1>
-    
-    //when i dont have my resuarant list return this(not rendering component early)
-    if(!restaurantList) return <div>No restaurant</div>;
-    return (restaurantList.length === 0) ? <LoadingUI/> : (
-        <>
-        <input type="text" className='border border-black' value={user.name} onChange={(e)=>setUser({...user, name: e.target.value})}/>
-        <input className='border border-black' value={user.email} onChange={(e)=> setUser({...user, email: e.target.value})}/>
+  const handleFilterButtons = (e) => {
+    handleFitersButton();
+    setFilterBtnStatus(e.target.value);
+    let filterBtnData = filterData(e.target.value, resDataa);
+    setFilterRestaurantList(filterBtnData);
+  };
 
-            <div className='float-right m-5 p-3 border-solid border-2 border-sky-500 rounded-2xl'>
-                <input type="text" className='p-2 border-b-2 border-indigo-200 outline-none focus:border-indigo-400' placeholder='Search' value={searchItem} onChange={(e) => { setSearchItem(e.target.value)}} />
-                <button className='bg-blue-200 p-2 rounded-xl ml-5' onClick={()=>{let data = filterData(searchItem, restaurantList); setFilterRestaurantList(data)}}>Search</button>
+  if (!online) return <h1>You are offline</h1>;
+
+  //when i dont have my resuarant list return this(not rendering component early)
+  if (!resDataa) return <LoadingUI />;
+  return (
+    <>
+      <div className="flex m-7 mx-20 justify-between">
+        <div className="relative">
+          <button
+            className="p-6 px-11 bg-blue-300 rounded-lg"
+            onClick={handleFitersButton}
+          >
+            Filter
+          </button>
+          {showFilter && (
+            <div className="absolute w-72 top-0 left-32 p-2 z-50 rounded-lg bg-white border border-black ">
+              <h1 className="font-bold text-xl">Filter</h1>
+              <div className="flex flex-col">
+                <div>
+                  <input
+                    type="radio"
+                    name="filter"
+                    id="default"
+                    value="defaultFilterOption"
+                    onChange={handleFilterButtons}
+                    checked={filterBtnStatus === "defaultFilterOption"}
+                  />
+                  <label htmlFor="lowToHigh"> Default</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="filter"
+                    id="lowToHigh"
+                    value="lowtohigh"
+                    onChange={handleFilterButtons}
+                    checked={filterBtnStatus === "lowtohigh"}
+                  />
+                  <label htmlFor="lowToHigh"> Cost: Low to high</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="filter"
+                    id="highToLow"
+                    value="highToLow"
+                    onChange={handleFilterButtons}
+                    checked={filterBtnStatus === "highToLow"}
+                  />
+                  <label htmlFor="highToLow"> Cost: High to low</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="filter"
+                    id="rating"
+                    value="rating"
+                    onChange={handleFilterButtons}
+                    checked={filterBtnStatus === "rating"}
+                  />
+                  <label htmlFor="rating"> Ratings</label>
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    name="filter"
+                    id="deliveryTime"
+                    value="deliveryTime"
+                    onChange={handleFilterButtons}
+                    checked={filterBtnStatus === "deliveryTime"}
+                  />
+                  <label htmlFor="deliveryTime"> Delivery time</label>
+                </div>
+              </div>
             </div>
-            <p className='clear-both'>contact - {user.name} - {user.email}</p>
-            <h1 className='clear-both font-bold text-3xl ml-[5vw] mb-4'>Restaurant Near You, {user.name}</h1>
-            <div className="grid sm:grid-cols-2 xl:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
-                
-                {(filterRestaurantList.length ===0) ? <h1>No reataurant match your filter</h1> : filterRestaurantList.map(restaurants => {
-                    return( 
-                    <Link to={"/restaurant/"+restaurants.info.id} key={restaurants.info.id}  >
-                        <RestaurantCard {...restaurants.info} />
-                    </Link> 
-                    )
-                })}
+          )}
+        </div>
+        <div className=" p-3 w-96 border-solid border-2 border-sky-500 rounded-2xl">
+          <input
+            type="text"
+            className="p-2 w-64 border-b-2 border-indigo-200 outline-none focus:border-indigo-400"
+            placeholder="Search"
+            value={searchItem}
+            onChange={(e) => {
+              setSearchItem(e.target.value);
+            }}
+          />
+          <button
+            className="bg-blue-200 p-2 rounded-xl ml-5"
+            onClick={() => {
+              let data = filterData(searchItem, resDataa);
+              setFilterRestaurantList(data);
+            }}
+          >
+            Search
+          </button>
+        </div>
+      </div>
 
-            </div>
+      <h1 className=" font-bold text-3xl ml-[5vw] mb-4">Restaurant Near You</h1>
 
-            
-        </>
-    )
-}
+      <div className="grid sm:grid-cols-2 xl:grid-cols-4 w-11/12 gap-7 mx-auto  justify-between">
+        {filterRestaurantList.length === 0 ? (
+          <h1>No reataurant match your filter</h1>
+        ) : (
+          filterRestaurantList.map((restaurants) => {
+            return (
+              <Link
+                to={"/restaurant/" + restaurants.info.id}
+                key={restaurants.info.id}
+              >
+                <RestaurantCard {...restaurants.info} />
+              </Link>
+            );
+          })
+        )}
+      </div>
+    </>
+  );
+};
 
-export default Body
+export default Body;

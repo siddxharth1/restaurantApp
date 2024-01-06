@@ -1,7 +1,7 @@
 import Login from "./Login";
 
 const Contact = ()=>{
-    return <Login/>
+    return <>contact info</>
 }
 
 export default Contact;
