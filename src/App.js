@@ -11,6 +11,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import LoadingUI from "./components/LoadingUI";
 import UserContext from "./utils/UserContext";
 import UserProfile, { Account } from "./UserProfile";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const Login = lazy(() => import("./components/Login"));
@@ -25,11 +28,13 @@ const AppLayout = () => {
 
   return (
     <>
-      <UserContext.Provider value={{user: user,setUser: setUser}} >
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContext.Provider>
+      <Provider store={store}>
+        <UserContext.Provider value={{ user: user, setUser: setUser }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </UserContext.Provider>
+      </Provider>
     </>
   );
 };
@@ -69,25 +74,31 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
+        path: "/cart",
+        element: <Cart/>
+      },
+      {
         path: "/profile",
-        element: <UserProfile/>,
-        children: [{
-          path: "account",
-          element: <Account/>
-        },
-        {
-          path: "orders",
-          element: <h1>Orders</h1>
-        },
-        {
-          path: "address",
-          element: <h1>Address</h1>
-        },
-        {
-          path: "payments",
-          element: <h1>Payments</h1>
-        }]
-      }
+        element: <UserProfile />,
+        children: [
+          {
+            path: "account",
+            element: <Account />,
+          },
+          {
+            path: "orders",
+            element: <h1>Orders</h1>,
+          },
+          {
+            path: "address",
+            element: <h1>Address</h1>,
+          },
+          {
+            path: "payments",
+            element: <h1>Payments</h1>,
+          },
+        ],
+      },
     ],
   },
   {

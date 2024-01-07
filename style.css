@@ -5,6 +5,11 @@
 .active{
     @apply text-blue-700 bg-white;
 }
+/* @layer base {
+    ul, ol {
+      list-style: revert;
+    }
+  } */
 /* body{
     margin: 0;
     padding: 0;

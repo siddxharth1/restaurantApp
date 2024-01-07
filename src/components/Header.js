@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const logedinUser = () => {
   return true;
@@ -10,10 +11,12 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+  const cartItem = useSelector((store)=> store.cart.items)
+  console.log(cartItem)
 
   return (
     <div className="p-7 flex justify-between items-center shadow-lg ">
-      <h1>FoodApp</h1>
+      <h1 className="font-bold text-2xl">YumByte</h1>
       <ul className="flex gap-6  font-semibold text-base text-gray-500">
         <NavLink to="/" className="hover:text-blue-600">
           Home
@@ -26,6 +29,9 @@ const Header = () => {
         </NavLink>
         <NavLink to="/instamart" className=" hover:text-blue-600">
           Instamart
+        </NavLink>
+        <NavLink to="/cart" className=" hover:text-blue-600">
+          cart: {cartItem.length}
         </NavLink>
       </ul>
 
