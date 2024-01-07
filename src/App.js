@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
 import Protected from "./components/Protected";
+import Breadcrumbs from "./components/Breadcrumbs";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const Login = lazy(() => import("./components/Login"));
@@ -32,6 +33,7 @@ const AppLayout = () => {
       <Provider store={store}>
         <UserContext.Provider value={{ user: user, setUser: setUser }}>
           <Header />
+          <Breadcrumbs/>
           <Outlet />
           <Footer />
         </UserContext.Provider>
@@ -61,6 +63,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurant",
+        element: <Body/>
       },
       {
         path: "/restaurant/:id",

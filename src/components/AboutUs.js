@@ -5,8 +5,8 @@ const AboutUs = () => {
   return (
     <div className="m-10 mx-32">
       {/* <h1 className="font-bold text-4xl">About us</h1> */}
-      <div class="relative">
-        <h1 class="pl-2 text-3xl font-bold border-l-8 border-blue-400 md:text-5xl ">
+      <div className="relative">
+        <h1 className="pl-2 text-3xl font-bold border-l-8 border-blue-400 md:text-5xl ">
           About us
         </h1>
       </div>
@@ -30,7 +30,7 @@ const AboutUs = () => {
         <h2 className="font-medium text-[80px] leading-[1.3]">
           Here's what makes YumByte different
         </h2>
-        <ul class="">
+        <ul className="">
           <li>
             <h2 className="text-xl font-semibold">Bite-Sized Brilliance:</h2> We curate the best restaurants and
             hidden gems in your city, hand-picking menus that burst with flavor
@@ -64,7 +64,7 @@ const AboutUs = () => {
       <div className="flex justify-between items-center mt-32">
     
       
-      <ul class="w-[600px] mr-32">
+      <ul className="w-[600px] mr-32">
         <li>
           <h2 className="text-xl font-semibold">Supporting local businesses:</h2> We champion independent
           restaurants and chefs, bringing their culinary creations straight to

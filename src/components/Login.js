@@ -24,6 +24,7 @@ const Login = () => {
             id=""
             className="p-3 py-2 w-80 rounded-md  border-2 border-gray-300 bg-slate-50 outline-none focus:border-gray-400 hover:border-gray-400 focus:bg-slate-100"
             placeholder="Email"
+            required
           />
           <input
             type="password"
@@ -31,6 +32,7 @@ const Login = () => {
             id=""
             className="p-3 py-2 w-80 rounded-md border-2 border-gray-300 bg-slate-50 outline-none focus:border-gray-400 hover:border-gray-400 focus:bg-slate-100"
             placeholder="Password"
+            required
           />
           <a
             href="#"
