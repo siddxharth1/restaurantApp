@@ -1,12 +1,18 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-const authenticate = ()=>{
-    return true;
-}
-
 
 const Login = () => {
   const navigate = useNavigate();
+  const loginUser = () => {
+    localStorage.setItem('login', true)
+    navigate("/");
+  };
+  useEffect(() => {
+    let login = localStorage.getItem("login");
+    if (login) {
+      navigate("/");
+    }
+  });
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-evenly">
       <div className="w-80">
@@ -32,14 +38,20 @@ const Login = () => {
           >
             Forgot Password?
           </a>
-          <button className="w-80 bg-blue-600 rounded-md p-2 text-white font-semibold hover:bg-blue-700"
-            onClick={()=>{(authenticate()) ? navigate("/") : alert("Wrong Credentials")}}
+          <button
+            className="w-80 bg-blue-600 rounded-md p-2 text-white font-semibold hover:bg-blue-700"
+            onClick={() => {
+              loginUser()
+            }}
           >
             Log in
           </button>
           <p className="text-sm font-medium text-gray-600">
             Don't have an account?
-            <Link to={"/signup"} className="text-blue-600 ml-1 hover:text-blue-700">
+            <Link
+              to={"/signup"}
+              className="text-blue-600 ml-1 hover:text-blue-700"
+            >
               Sign up
             </Link>
           </p>
@@ -72,7 +84,10 @@ const Login = () => {
         </div>
       </div>
       <div>
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/fast-food-4119390-3425151.png" alt="" />
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/fast-food-4119390-3425151.png"
+          alt=""
+        />
       </div>
     </div>
   );

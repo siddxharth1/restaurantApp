@@ -3,16 +3,19 @@ import { NavLink, useNavigate } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
-const logedinUser = () => {
-  return true;
-};
-
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('login'));
+  // const isLoggedIn = localStorage.getItem('login')
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const cartItem = useSelector((store)=> store.cart.items)
   console.log(cartItem)
+  console.log( "login "+isLoggedIn);
+
+  const logoutBtnHandler =()=>{
+    localStorage.removeItem('login')
+    setIsLoggedIn(false)
+  }
 
   return (
     <div className="p-7 flex justify-between items-center shadow-lg ">
@@ -40,7 +43,7 @@ const Header = () => {
         {isLoggedIn ? (
           <button
             className="px-5 py-2.5 font-medium bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-lg text-sm"
-            onClick={() => setIsLoggedIn(false)}
+            onClick={() => logoutBtnHandler()}
           >
             Logout
           </button>

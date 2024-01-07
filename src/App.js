@@ -14,6 +14,7 @@ import UserProfile, { Account } from "./UserProfile";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import Protected from "./components/Protected";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const Login = lazy(() => import("./components/Login"));
@@ -75,11 +76,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart/>
+        element: <Protected Component={ Cart}/> 
       },
       {
         path: "/profile",
-        element: <UserProfile />,
+        element: <Protected Component={UserProfile} />,
         children: [
           {
             path: "account",

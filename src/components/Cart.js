@@ -21,6 +21,8 @@ const Cart = () => {
 
   const clearCartHandler = ()=>{
     dispatch(clearCart())
+    setDiscountedAmount(0)
+    couponCode.current.value = ""
   }
 
   const discounts = {
