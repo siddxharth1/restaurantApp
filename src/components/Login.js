@@ -7,6 +7,7 @@ const Login = () => {
     localStorage.setItem('login', true)
     navigate("/");
   };
+  
   useEffect(() => {
     let login = localStorage.getItem("login");
     if (login) {
