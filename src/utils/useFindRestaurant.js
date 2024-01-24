@@ -8,7 +8,7 @@ const useFindRestaurant = ()=>{
     }, [])
 
     async function fetchRestaurantList(){
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1894506&lng=72.88587869999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://corsproxy.org/?" + encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1894506&lng=72.88587869999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"));
         const jsonData = await data.json();
 
         async function findRestaurantInJson(dataa) {

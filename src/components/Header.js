@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <div className="p-7 flex justify-between items-center shadow-lg ">
       {/* <h1 className="font-bold text-2xl">YumByte</h1> */}
-      <img className="h-16" src="https://scontent.famd15-1.fna.fbcdn.net/v/t39.30808-6/299842146_492697136194039_5611518144860645531_n.png?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=TL8VnKhWRkIAX8qfzg6&_nc_ht=scontent.famd15-1.fna&oh=00_AfA4lC6arH30JqkiKxi2V33smYxhfWe_MP_7ai5hcHdIvQ&oe=65A06E76" alt="" />
+      <img className="h-16" src="https://scontent.fstv8-1.fna.fbcdn.net/v/t39.30808-6/299842146_492697136194039_5611518144860645531_n.png?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=-r7LMi0AVScAX_cGBbh&_nc_ht=scontent.fstv8-1.fna&oh=00_AfDEjPfK_K-BrIsncCFHG9VOnfYaxz5c-o6bC8-xhEiiZA&oe=65B62F36" alt="img" />
       <ul className="flex gap-6  font-semibold text-base text-gray-500">
         <NavLink to="/" className="hover:text-blue-600">
           Home
