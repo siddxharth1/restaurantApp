@@ -9,7 +9,8 @@ function filterData(searchItem, resDataa) {
   console.log(resDataa);
   if (searchItem === "defaultFilterOption") {
     return resDataa;
-  } else if (searchItem === "lowtohigh") {
+  } 
+  else if (searchItem === "lowtohigh") {
     let lowToHighData = resDataa.sort((a, b) => {
       return (
         Number(a.info.costForTwo.substring(1, 3)) -
@@ -17,7 +18,8 @@ function filterData(searchItem, resDataa) {
       );
     });
     return lowToHighData;
-  } else if (searchItem === "highToLow") {
+  } 
+  else if (searchItem === "highToLow") {
     let highToLowData = resDataa.sort((a, b) => {
       return (
         Number(b.info.costForTwo.substring(1, 3)) -
@@ -25,11 +27,13 @@ function filterData(searchItem, resDataa) {
       );
     });
     return highToLowData;
-  } else if (searchItem === "rating") {
+  } 
+  else if (searchItem === "rating") {
     return resDataa.sort((a, b) => {
       return b.info.avgRating - a.info.avgRating;
     });
-  } else if (searchItem === "deliveryTime") {
+  } 
+  else if (searchItem === "deliveryTime") {
     return resDataa.sort((a, b) => {
       return a.info.sla.deliveryTime - b.info.sla.deliveryTime;
     });
