@@ -9,12 +9,16 @@ import locationIcon from '../assets/locationIcon.svg'
 
 const RestaurantMenu = () => {
   const { id } = useParams();
-  const restaurant = useRestaurant(id);
+  const {restaurant, restaurantMenu} = useRestaurant(id);
   const dispatch = useDispatch()
   const handleAddItem =({card})=>{
     dispatch(addItem(card.info))
   }
 
+  useEffect(()=>{
+    console.log(restaurantMenu)
+  },[restaurantMenu])
+  
   return !restaurant ? (
     <LoadingUI />
   ) : (
@@ -82,7 +86,7 @@ const RestaurantMenu = () => {
               <div key={card.card.info.id} className=" shadow-2xl rounded-lg p-3 flex flex-col gap-2 justify-center">
                 <img src={IMG_URL + "/w_208/" + card.card.info.imageId} className="h-52"></img>
                 <h5> {card.card.info.name}</h5>
-                <h5> {(card.card.info.defaultPrice/100) ?(card.card.info.defaultPrice/100) : (card.card.info.price/100)}</h5>
+                <h5> ₹{(card.card.info.defaultPrice/100) ?(card.card.info.defaultPrice/100) : (card.card.info.price/100)}</h5>
                 <button className="bg-green-700 p-2 rounded" onClick={()=>{handleAddItem(card)}}>Add to cart</button>
               </div>
             );
