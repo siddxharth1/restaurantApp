@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 const useRestaurant=(id)=>{
     const [restaurant, setRestaurant] = useState(null);
+    const [restaurantMenu, setRestaurantMenu] =  useState()
 
     useEffect(()=>{
         fetchRestaurant();
@@ -11,8 +12,14 @@ const useRestaurant=(id)=>{
         const resp = await data.json();
         setRestaurant(resp)
         console.log(resp)
+
+        const restaurants = resp.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter((item)=>{
+            return item.card.card["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+        })
+        
+        console.log(restaurants)
     }
-    return restaurant;
+    return {restaurant, restaurantMenu};
 }
 
 export default useRestaurant;
