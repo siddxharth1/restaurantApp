@@ -2,8 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import LoadingUI from "./LoadingUI";
 import { Link } from "react-router-dom";
-import useOnline from "../utils/useOnline";
-import useFindRestaurant from "../utils/useFindRestaurant";
+import useOnline from "../utils/hooks/useOnline";
+import useFindRestaurant from "../utils/hooks/useFindRestaurant";
+import { useDispatch } from "react-redux";
+import useGeoLocation from "../utils/hooks/useGeoLocation";
+import { updateLocation } from "../utils/locationSlice";
 
 function filterData(searchItem, resDataa) {
   console.log(resDataa);
@@ -54,6 +57,15 @@ const Body = () => {
   const resDataa = useFindRestaurant();
   const online = useOnline();
   console.log(resDataa);
+  
+  const dispatch = useDispatch();
+  const loc = useGeoLocation();
+  
+  useEffect(() =>{
+    if(loc){
+      dispatch(updateLocation(loc))
+    }
+  }, [loc])
 
   useEffect(() => {
     if (resDataa) {
@@ -76,6 +88,9 @@ const Body = () => {
 
   //when i dont have my resuarant list return this(not rendering component early)
   if (!resDataa) return <LoadingUI />;
+
+  if(resDataa === "No_Res") return <h1>No restaurant found at your current location</h1>
+  
   return (
     <>
       <div className="flex m-7 mx-20 justify-between">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_URL } from "../constants";
 import LoadingUI from "./LoadingUI";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurant from "../utils/hooks/useRestaurant";
 import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import locationIcon from '../assets/locationIcon.svg'

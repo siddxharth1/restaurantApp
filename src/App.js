@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -11,7 +11,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import LoadingUI from "./components/LoadingUI";
 import UserContext from "./utils/UserContext";
 import UserProfile, { Account } from "./UserProfile";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
 import Protected from "./components/Protected";
