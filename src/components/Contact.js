@@ -2,23 +2,23 @@ import Login from "./Login";
 
 const Contact = () => {
   return (
-    <div class="container mt-10 mx-auto md:px-6">
-      <section class="mb-32">
-        <h2 class="mb-12 px-6 text-3xl font-bold">Contact us</h2>
-        <div class="">
-          <div class="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
-            <div class="flex flex-wrap">
-              <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
-                <div class="flex items-start bg-gray-200 p-3">
-                  <div class="shrink-0 ">
-                    <div class="inline-block rounded-md bg-primary-100 p-4 text-primary ">
+    <div className="container mt-10 mx-auto md:px-6">
+      <section className="mb-32">
+        <h2 className="mb-12 px-6 text-3xl font-bold">Contact us</h2>
+        <div className="">
+          <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
+            <div className="flex flex-wrap">
+              <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="flex items-start bg-gray-200 p-3">
+                  <div className="shrink-0 ">
+                    <div className="inline-block rounded-md bg-primary-100 p-4 text-primary ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="2"
                         stroke="currentColor"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <path
                           stroke-linecap="round"
@@ -28,28 +28,28 @@ const Contact = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-6 grow">
-                    <p class="mb-2 font-bold">Technical support</p>
-                    <p class="text-neutral-500 ">
+                  <div className="ml-6 grow">
+                    <p className="mb-2 font-bold">Technical support</p>
+                    <p className="text-neutral-500 ">
                       support@YumByte.com
                     </p>
-                    <p class="text-neutral-500 ">
+                    <p className="text-neutral-500 ">
                       +91 987654321
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
-                <div class="flex items-start bg-gray-200 p-3">
-                  <div class="shrink-0">
-                    <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+              <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="flex items-start bg-gray-200 p-3">
+                  <div className="shrink-0">
+                    <div className="inline-block rounded-md bg-primary-100 p-4 text-primary">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="2"
                         stroke="currentColor"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <path
                           stroke-linecap="round"
@@ -59,28 +59,28 @@ const Contact = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-6 grow">
-                    <p class="mb-2 font-bold">Sales questions</p>
-                    <p class="text-neutral-500 ">
+                  <div className="ml-6 grow">
+                    <p className="mb-2 font-bold">Sales questions</p>
+                    <p className="text-neutral-500 ">
                       sales@YumByte.com
                     </p>
-                    <p class="text-neutral-500 ">
+                    <p className="text-neutral-500 ">
                       +91 987654321
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
-                <div class="align-start flex bg-gray-200 p-3">
-                  <div class="shrink-0">
-                    <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+              <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="align-start flex bg-gray-200 p-3">
+                  <div className="shrink-0">
+                    <div className="inline-block rounded-md bg-primary-100 p-4 text-primary">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="2"
                         stroke="currentColor"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <path
                           stroke-linecap="round"
@@ -90,28 +90,28 @@ const Contact = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-6 grow">
-                    <p class="mb-2 font-bold ">Press</p>
-                    <p class="text-neutral-500 ">
+                  <div className="ml-6 grow">
+                    <p className="mb-2 font-bold ">Press</p>
+                    <p className="text-neutral-500 ">
                       press@YumByte.com
                     </p>
-                    <p class="text-neutral-500 ">
+                    <p className="text-neutral-500 ">
                       +91 987654321
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
-                <div class="align-start flex bg-gray-200 p-3">
-                  <div class="shrink-0">
-                    <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+              <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="align-start flex bg-gray-200 p-3">
+                  <div className="shrink-0">
+                    <div className="inline-block rounded-md bg-primary-100 p-4 text-primary">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth="2"
                         stroke="currentColor"
-                        class="h-6 w-6"
+                        className="h-6 w-6"
                       >
                         <path
                           stroke-linecap="round"
@@ -121,12 +121,12 @@ const Contact = () => {
                       </svg>
                     </div>
                   </div>
-                  <div class="ml-6 grow">
-                    <p class="mb-2 font-bold ">Bug report</p>
-                    <p class="text-neutral-500 ">
+                  <div className="ml-6 grow">
+                    <p className="mb-2 font-bold ">Bug report</p>
+                    <p className="text-neutral-500 ">
                       bugs@YumByte.com
                     </p>
-                    <p class="text-neutral-500 ">
+                    <p className="text-neutral-500 ">
                       +91 987654321
                     </p>
                   </div>

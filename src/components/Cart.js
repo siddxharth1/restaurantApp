@@ -56,6 +56,11 @@ const Cart = () => {
                 className="outline-none border-b-2 border-blue-300 w-72" 
               />
               <button className="bg-sky-300 px-2 rounded" onClick={()=>getDiscount(couponCode.current.value)}>Apply</button>
+              <ul className="flex gap-2 my-2"> 
+                <li className="border-2 border-black rounded px-2 bg-zinc-300">FREE</li>
+                <li className="border-2 border-black rounded px-2 bg-zinc-300">FLAT50</li>
+                <li className="border-2 border-black rounded px-2 bg-zinc-300">FLAT30</li>
+              </ul>
             </div>
             <div className="flex justify-between">
               <p>Item Total:</p>

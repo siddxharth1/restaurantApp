@@ -48,9 +48,9 @@ const Signup = () => {
           </p>
         </div>
 
-        <div class="inline-flex relative items-center my-6">
-          <hr class="w-80 h-px  bg-gray-200 border-0 dark:bg-gray-700" />
-          <span class="absolute px-2 text-xs text-gray-500 -translate-x-1/2 bg-white left-1/2 -mt-1">
+        <div className="inline-flex relative items-center my-6">
+          <hr className="w-80 h-px  bg-gray-200 border-0 dark:bg-gray-700" />
+          <span className="absolute px-2 text-xs text-gray-500 -translate-x-1/2 bg-white left-1/2 -mt-1">
             or login using
           </span>
         </div>

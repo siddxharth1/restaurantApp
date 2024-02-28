@@ -81,13 +81,7 @@ const RestaurantMenu = () => {
       <div className="m-10">
         {restaurantMenu.map((item) => {
             return (
-              <FoodCategory category={item.card.card}/>
-              // <div key={card.card.info.id} className=" shadow-2xl rounded-lg p-3 flex flex-col gap-2 justify-center">
-              //   <img src={IMG_URL + "/w_208/" + card.card.info.imageId} className="h-52"></img>
-              //   <h5> {card.card.info.name}</h5>
-              //   <h5> ₹{(card.card.info.defaultPrice/100) ?(card.card.info.defaultPrice/100) : (card.card.info.price/100)}</h5>
-              //   <button className="bg-green-700 p-2 rounded" onClick={()=>{handleAddItem(card)}}>Add to cart</button>
-              // </div>
+              <FoodCategory key={item.card.card.title} category={item.card.card}/>
             );
           }
         )}
