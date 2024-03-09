@@ -3,7 +3,7 @@ import { IMG_URL } from "../constants";
 const RestaurantCard = ({name, cloudinaryImageId, cuisines, avgRating}) => {
     // const{name, cloudinaryImageId, cuisines, avgRating} = restaurant.info
     return (<div className="w-80 mx-auto hover:scale-[0.96] transition-all duration-300 ">
-        <img className="h-60 w-80 object-cover rounded-3xl  drop-shadow-xl" src={IMG_URL + cloudinaryImageId} alt="image" />
+        <img className="h-60 w-80 object-cover rounded-3xl  drop-shadow-xl" src={IMG_URL + cloudinaryImageId}  alt="image" />
 
         <div className="m-2">
             <h3 className="font-semibold text-xl overflow-hidden whitespace-nowrap text-ellipsis">{name}</h3>

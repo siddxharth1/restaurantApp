@@ -36,7 +36,9 @@ const RestaurantMenu = () => {
                 ", "
               )}
             </p>
-            <a className="flex items-center" target="_blank" href={"https://www.google.com/maps?q="+restaurant?.data?.cards?.[0]?.card?.card?.info?.latLong} >
+            <a className="flex items-center" target="_blank" 
+            // href={"https://www.google.com/maps?q="+restaurant?.data?.cards?.[0]?.card?.card?.info?.latLong} 
+            >
               <img src={locationIcon} alt=""/>
               <p className="ml-1">
               {restaurant?.locality},{" "}
