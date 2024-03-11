@@ -7,6 +7,7 @@ import useFindRestaurant from "../utils/hooks/useFindRestaurant";
 import { useDispatch } from "react-redux";
 import useGeoLocation from "../utils/hooks/useGeoLocation";
 import { updateLocation } from "../utils/locationSlice";
+import NoRestaurant from "./NoRestaurant";
 
 function filterData(searchItem, resDataa) {
   console.log(resDataa);
@@ -89,7 +90,7 @@ const Body = () => {
   //when i dont have my resuarant list return this(not rendering component early)
   if (!resDataa) return <LoadingUI />;
 
-  if(resDataa === "No_Res") return <h1>No restaurant found at your current location</h1>
+  if(resDataa === "No_Res") return <NoRestaurant/>
   
   return (
     <>

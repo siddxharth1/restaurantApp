@@ -94,15 +94,15 @@ const appRouter = createBrowserRouter([
           },
           {
             path: "orders",
-            element: <h1>Orders</h1>,
+            element: <h1 className="font-bold text-xl">Orders</h1>,
           },
           {
             path: "address",
-            element: <h1>Address</h1>,
+            element: <h1 className="font-bold text-xl">Address</h1>,
           },
           {
             path: "payments",
-            element: <h1>Payments</h1>,
+            element: <h1 className="font-bold text-xl">Payments</h1>,
           },
         ],
       },
