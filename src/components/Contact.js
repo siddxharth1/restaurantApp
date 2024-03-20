@@ -2,8 +2,8 @@ import Login from "./Login";
 
 const Contact = () => {
   return (
-    <div className="container mt-10 mx-auto md:px-6">
-      <section className="mb-32">
+    <div className="container mt-10 mx-28 md:px-6">
+      <section className="mb-32 ">
         <h2 className="mb-12 px-6 text-3xl font-bold">Contact us</h2>
         <div className="">
           <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
@@ -30,12 +30,8 @@ const Contact = () => {
                   </div>
                   <div className="ml-6 grow">
                     <p className="mb-2 font-bold">Technical support</p>
-                    <p className="text-neutral-500 ">
-                      support@YumByte.com
-                    </p>
-                    <p className="text-neutral-500 ">
-                      +91 987654321
-                    </p>
+                    <p className="text-neutral-500 ">support@YumByte.com</p>
+                    <p className="text-neutral-500 ">+91 987654321</p>
                   </div>
                 </div>
               </div>
@@ -61,12 +57,8 @@ const Contact = () => {
                   </div>
                   <div className="ml-6 grow">
                     <p className="mb-2 font-bold">Sales questions</p>
-                    <p className="text-neutral-500 ">
-                      sales@YumByte.com
-                    </p>
-                    <p className="text-neutral-500 ">
-                      +91 987654321
-                    </p>
+                    <p className="text-neutral-500 ">sales@YumByte.com</p>
+                    <p className="text-neutral-500 ">+91 987654321</p>
                   </div>
                 </div>
               </div>
@@ -92,12 +84,8 @@ const Contact = () => {
                   </div>
                   <div className="ml-6 grow">
                     <p className="mb-2 font-bold ">Press</p>
-                    <p className="text-neutral-500 ">
-                      press@YumByte.com
-                    </p>
-                    <p className="text-neutral-500 ">
-                      +91 987654321
-                    </p>
+                    <p className="text-neutral-500 ">press@YumByte.com</p>
+                    <p className="text-neutral-500 ">+91 987654321</p>
                   </div>
                 </div>
               </div>
@@ -123,12 +111,8 @@ const Contact = () => {
                   </div>
                   <div className="ml-6 grow">
                     <p className="mb-2 font-bold ">Bug report</p>
-                    <p className="text-neutral-500 ">
-                      bugs@YumByte.com
-                    </p>
-                    <p className="text-neutral-500 ">
-                      +91 987654321
-                    </p>
+                    <p className="text-neutral-500 ">bugs@YumByte.com</p>
+                    <p className="text-neutral-500 ">+91 987654321</p>
                   </div>
                 </div>
               </div>
