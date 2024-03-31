@@ -18,7 +18,7 @@ const FoodCategory = ({ category }) => {
               className=" shadow-2xl rounded-lg p-3 flex flex-col gap-2 justify-center"
             >
               <img
-                src={IMG_URL + "/w_208/" + item.card.info.imageId}
+                src={IMG_URL + item.card.info.imageId}
                 className="h-52"
               ></img>
               <div>

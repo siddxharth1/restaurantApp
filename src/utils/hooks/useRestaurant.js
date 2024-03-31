@@ -14,10 +14,10 @@ const useRestaurant = (id) => {
     );
     const resp = await data.json();
     console.log(resp);
-    setRestaurant(resp.data.cards[0].card.card.info);
+    setRestaurant(resp.data.cards[2].card.card.info);
 
     const restaurants =
-      resp.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+      resp.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter(
         (item) => {
           return (
             item.card.card["@type"] ==
@@ -25,8 +25,9 @@ const useRestaurant = (id) => {
           );
         }
       );
-
     setRestaurantMenu(restaurants);
+    console.log(restaurant);
+    console.log(restaurantMenu);
   }
   return { restaurant, restaurantMenu };
 };
