@@ -25,7 +25,7 @@ const Header = () => {
     <div className="p-7 flex justify-between items-center shadow-lg ">
       {/* <h1 className="font-bold text-2xl">YumByte</h1> */}
       <img className="h-16" src={img} alt="YumBites" />
-      <ul className="flex gap-6  font-semibold text-base text-gray-500">
+      <div className="flex gap-6  font-semibold text-base text-gray-500">
         <NavLink to="/" className="hover:text-blue-600">
           Home
         </NavLink>
@@ -41,7 +41,7 @@ const Header = () => {
         <NavLink to="/cart" className=" hover:text-blue-600">
           cart: {cartItem.length}
         </NavLink>
-      </ul>
+      </div>
 
       <div className="flex items-center">
         <span
