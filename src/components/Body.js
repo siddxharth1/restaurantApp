@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import LoadingUI from "./LoadingUI";
 import { Link } from "react-router-dom";
-import useOnline from "../utils/hooks/useOnline";
+
 import useFindRestaurant from "../utils/hooks/useFindRestaurant";
 import { useDispatch } from "react-redux";
 import useGeoLocation from "../utils/hooks/useGeoLocation";
@@ -52,7 +52,7 @@ const Body = () => {
   //   const [restaurantList, setRestaurantList] = useState([])
   const [filterRestaurantList, setFilterRestaurantList] = useState([]);
   const resDataa = useFindRestaurant();
-  const online = useOnline();
+
   console.log(resDataa);
 
   const dispatch = useDispatch();
@@ -81,12 +81,15 @@ const Body = () => {
     setFilterRestaurantList(filterBtnData);
   };
 
-  if (!online) return <h1>You are offline</h1>;
-
   //when i dont have my resuarant list return this(not rendering component early)
   if (!resDataa) return <LoadingUI />;
 
-  if (resDataa === "No_Res") return <NoRestaurant />;
+  if (resDataa === "Error")
+    return <NoRestaurant title="Something went wrong" />;
+  if (resDataa === "No_Res")
+    return (
+      <NoRestaurant title="No restaurant found at your current location" />
+    );
 
   return (
     <>

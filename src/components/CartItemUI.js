@@ -23,7 +23,7 @@ const CartItemUI = ({ name, price, imageId, defaultPrice, id }) => {
   const cartItem = cartItems.find((cartItm) => cartItm.id == id);
 
   return (
-    <div className="flex bg-slate-200 rounded-md p-3 align-middle">
+    <div className="flex bg-slate-200 rounded-md p-3 items-center">
       <img className="w-[150px] h-24 rounded-lg" src={IMG_URL + imageId} />
       <div className="p-4 flex justify-between items-center flex-grow">
         <div>

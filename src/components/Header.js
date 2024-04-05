@@ -1,23 +1,25 @@
 import { useState, useContext } from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
-import img from '../assets/download.png'
+import img from "../assets/download.png";
+import useOnline from "../utils/hooks/useOnline";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('login'));
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("login"));
   // const isLoggedIn = localStorage.getItem('login')
   const { user } = useContext(UserContext);
-  const cartItem = useSelector((store)=> store.cart.items)
-  console.log(cartItem)
-  console.log( "login "+isLoggedIn);
+  const cartItem = useSelector((store) => store.cart.items);
+  console.log(cartItem);
+  console.log("login " + isLoggedIn);
 
-  const logoutBtnHandler =()=>{
-    localStorage.removeItem('login')
-    setIsLoggedIn(false)
+  const logoutBtnHandler = () => {
+    localStorage.removeItem("login");
+    setIsLoggedIn(false);
     // window.location.reload();
+  };
 
-  }
+  const online = useOnline();
 
   return (
     <div className="p-7 flex justify-between items-center shadow-lg ">
@@ -41,23 +43,33 @@ const Header = () => {
         </NavLink>
       </ul>
 
-      <div>
-        <NavLink to="/profile/account" className="text-sky-700 font-semibold mr-4">Hello, {(isLoggedIn) ? user?.name : 'user'}</NavLink>
-        {isLoggedIn ? (
-          <button
-            className="px-5 py-2.5 font-medium bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-lg text-sm"
-            onClick={() => logoutBtnHandler()}
+      <div className="flex items-center">
+        <span
+          className={
+            "w-2 h-2 mx-2 rounded-full " +
+            (online ? "bg-green-500" : "bg-gray-500")
+          }
+        ></span>
+        <div>
+          <NavLink
+            to="/profile/account"
+            className="text-sky-700 font-semibold mr-4"
           >
-            Logout
-          </button>
-        ) : (
-          <button
-            className="px-5 py-2.5 font-medium bg-blue-50 hover:bg-blue-100 hover:text-blue-600 text-blue-500 rounded-lg text-sm"
-          >
-            <Link to="/login">Login</Link>
-            
-          </button>
-        )}
+            Hello, {isLoggedIn ? user?.name : "user"}
+          </NavLink>
+          {isLoggedIn ? (
+            <button
+              className="px-5 py-2.5 font-medium bg-blue-100 hover:bg-blue-200 hover:text-blue-600 text-blue-500 rounded-lg text-sm"
+              onClick={() => logoutBtnHandler()}
+            >
+              Logout
+            </button>
+          ) : (
+            <button className="px-5 py-2.5 font-medium bg-blue-100 hover:bg-blue-200 hover:text-blue-600 text-blue-500 rounded-lg text-sm">
+              <Link to="/login">Login</Link>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
