@@ -27,13 +27,25 @@ const AppLayout = () => {
     email: "sid@gmail.com",
     number: "1234567890",
   });
+  useEffect(() => {
+    const handleUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
 
   return (
     <>
       <Provider store={store}>
         <UserContext.Provider value={{ user: user, setUser: setUser }}>
           <Header />
-          <Breadcrumbs/>
+          <Breadcrumbs />
           <Outlet />
           <Footer />
         </UserContext.Provider>
@@ -66,7 +78,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant",
-        element: <Body/>
+        element: <Body />,
       },
       {
         path: "/restaurant/:id",
@@ -82,7 +94,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Protected Component={ Cart}/> 
+        element: <Protected Component={Cart} />,
       },
       {
         path: "/profile",

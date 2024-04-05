@@ -13,8 +13,7 @@ function filterData(searchItem, resDataa) {
   console.log(resDataa);
   if (searchItem === "defaultFilterOption") {
     return resDataa;
-  } 
-  else if (searchItem === "lowtohigh") {
+  } else if (searchItem === "lowtohigh") {
     let lowToHighData = resDataa.sort((a, b) => {
       return (
         Number(a.info.costForTwo.substring(1, 3)) -
@@ -22,8 +21,7 @@ function filterData(searchItem, resDataa) {
       );
     });
     return lowToHighData;
-  } 
-  else if (searchItem === "highToLow") {
+  } else if (searchItem === "highToLow") {
     let highToLowData = resDataa.sort((a, b) => {
       return (
         Number(b.info.costForTwo.substring(1, 3)) -
@@ -31,13 +29,11 @@ function filterData(searchItem, resDataa) {
       );
     });
     return highToLowData;
-  } 
-  else if (searchItem === "rating") {
+  } else if (searchItem === "rating") {
     return resDataa.sort((a, b) => {
       return b.info.avgRating - a.info.avgRating;
     });
-  } 
-  else if (searchItem === "deliveryTime") {
+  } else if (searchItem === "deliveryTime") {
     return resDataa.sort((a, b) => {
       return a.info.sla.deliveryTime - b.info.sla.deliveryTime;
     });
@@ -58,15 +54,15 @@ const Body = () => {
   const resDataa = useFindRestaurant();
   const online = useOnline();
   console.log(resDataa);
-  
+
   const dispatch = useDispatch();
   const loc = useGeoLocation();
-  
-  useEffect(() =>{
-    if(loc){
-      dispatch(updateLocation(loc))
+
+  useEffect(() => {
+    if (loc) {
+      dispatch(updateLocation(loc));
     }
-  }, [loc])
+  }, [loc]);
 
   useEffect(() => {
     if (resDataa) {
@@ -90,8 +86,8 @@ const Body = () => {
   //when i dont have my resuarant list return this(not rendering component early)
   if (!resDataa) return <LoadingUI />;
 
-  if(resDataa === "No_Res") return <NoRestaurant/>
-  
+  if (resDataa === "No_Res") return <NoRestaurant />;
+
   return (
     <>
       <div className="flex m-7 mx-20 justify-between">

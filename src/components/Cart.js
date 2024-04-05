@@ -14,7 +14,9 @@ const Cart = () => {
   useEffect(() => {
     let sum = 0;
     cartData.forEach((item) => {
-      sum += item.price ? item.price / 100 : item.defaultPrice / 100;
+      sum += item.price
+        ? (item.price / 100) * item.quantity
+        : (item.defaultPrice / 100) * item.quantity;
     });
     setItemTotal(sum);
   }, [cartData]);
