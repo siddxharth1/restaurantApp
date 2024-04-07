@@ -10,7 +10,6 @@ const FoodCategory = ({ category }) => {
   const handleAddItem = ({ card }) => {
     dispatch(addItem(card.info));
   };
-  console.log(category);
 
   const increaseItemInCart = (id) => {
     dispatch(addItem(id));

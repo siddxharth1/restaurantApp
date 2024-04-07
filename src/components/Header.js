@@ -10,8 +10,8 @@ const Header = () => {
   // const isLoggedIn = localStorage.getItem('login')
   const { user } = useContext(UserContext);
   const cartItem = useSelector((store) => store.cart.items);
-  console.log(cartItem);
-  console.log("login " + isLoggedIn);
+  // console.log(cartItem);
+  // console.log("login " + isLoggedIn);
 
   const logoutBtnHandler = () => {
     localStorage.removeItem("login");

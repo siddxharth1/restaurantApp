@@ -1,4 +1,5 @@
 import { IMG_URL } from "../constants";
+import imag from "../assets/download.png";
 
 const RestaurantCard = ({ name, cloudinaryImageId, cuisines, avgRating }) => {
   // const{name, cloudinaryImageId, cuisines, avgRating} = restaurant.info
@@ -8,6 +9,10 @@ const RestaurantCard = ({ name, cloudinaryImageId, cuisines, avgRating }) => {
         className="h-60 w-80 object-cover rounded-3xl  drop-shadow-xl"
         src={IMG_URL + cloudinaryImageId}
         alt="image"
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = imag;
+        }}
       />
 
       <div className="m-2">

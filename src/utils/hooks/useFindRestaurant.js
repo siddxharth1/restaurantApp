@@ -14,12 +14,19 @@ const useFindRestaurant = () => {
 
   async function fetchRestaurantList() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=" +
+      // "https://corsproxy.org/?" +
+      //   encodeURIComponent(
+      "https://thingproxy.freeboard.io/fetch/" +
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=" +
         loc.coordinate.lat +
         "&lng=" +
         loc.coordinate.lon +
         "&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      // )
     );
+    if (!data.ok) {
+      throw new Error("Something went wrong with fetching restaurants");
+    }
     // const data = await fetch("https://corsproxy.org/?" + encodeURIComponent("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1894506&lng=72.88587869999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"));
     const jsonData = await data.json();
     console.log(jsonData);
