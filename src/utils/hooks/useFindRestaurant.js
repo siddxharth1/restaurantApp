@@ -16,8 +16,7 @@ const useFindRestaurant = () => {
     const data = await fetch(
       // "https://corsproxy.org/?" +
       //   encodeURIComponent(
-      "https://thingproxy.freeboard.io/fetch/" +
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=" +
+      "https://carefood-cors.vercel.app/api/proxy/swiggy/dapi/restaurants/list/v5?lat=" +
         loc.coordinate.lat +
         "&lng=" +
         loc.coordinate.lon +
